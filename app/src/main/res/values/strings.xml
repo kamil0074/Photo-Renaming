@@ -1,0 +1,7 @@
+<resources>
+	<string name="app_name">Photo Renaming</string>
+	<string name="title_activity_main">Photo Renaming</string>
+
+	<string name="hello_world">Hello world!</string>
+	<string name="action_settings">Settings</string>
+</resources>
