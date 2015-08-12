@@ -10,6 +10,7 @@ import android.view.View;
 
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity
 {
@@ -71,9 +72,32 @@ public class MainActivity extends AppCompatActivity
 					return name.toLowerCase().endsWith(".jpg");
 				}
 			});
+			Arrays.sort(photos);
 		}catch(Exception e)
 		{
 			e.printStackTrace();
+		}
+		for(File photo:photos)
+		{
+			String nazwa="hasdhksadhj"+photo.getName(); //photo.toString().substring(aa+1,photo.toString().length());
+			Log.w("nazwa",nazwa);
+			File nowa=new File(folder,nazwa);
+			photo.renameTo(nowa);
+		}
+		try
+		{
+			photos=folder.listFiles(new FilenameFilter()
+			{
+				public boolean accept(File dir,String name)
+				{
+					return name.toLowerCase().endsWith(".jpg");
+				}
+			});
+			Arrays.sort(photos);
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+			return;
 		}
 		int i=100;
 		for(File photo:photos)
