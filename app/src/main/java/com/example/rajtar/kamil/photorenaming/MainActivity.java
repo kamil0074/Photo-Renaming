@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity
 			appDir = new File(Environment.getExternalStorageDirectory(), "Canon EOS 70D");
 			appDir.mkdirs();
 		}
-		catch (Exception e) { }
+		catch (Exception e) {e.printStackTrace(); }
 
 		return appDir;
 	}
