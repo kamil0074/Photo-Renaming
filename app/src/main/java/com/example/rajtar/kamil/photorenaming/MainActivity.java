@@ -49,7 +49,7 @@ public class MainActivity extends AppCompatActivity
 		File appDir = null;
 
 		try {
-			appDir = new File(Environment.getExternalStorageDirectory(), "Zmiana Nazwy");
+			appDir = new File(Environment.getExternalStorageDirectory(), "Canon EOS 70D");
 			appDir.mkdirs();
 		}
 		catch (Exception e) { }
@@ -75,18 +75,29 @@ public class MainActivity extends AppCompatActivity
 		{
 			e.printStackTrace();
 		}
+		int i=100;
 		for(File photo:photos)
 		{
-			int aa=photo.toString().lastIndexOf("_");
-			if (aa==-1)
-				continue;
-			Log.w("po aa","das"+aa+"L"+(int)photo.toString().length());
+			//int aa=photo.toString().lastIndexOf("_");
+			//if (aa==-1)
+			//	continue;
+			//Log.w("po aa","das"+aa+"L"+(int)photo.toString().length());
 
-			String nazwa=photo.toString().substring(aa+1,photo.toString().length());
+			String nazwa="IMG_0"+Integer.toString(i)+".jpg";//photo.toString().substring(aa+1,photo.toString().length());
+			i++;
 			Log.w("nazwa",nazwa);
 			File nowa=new File(folder,nazwa);
+			while(nowa.exists())
+			{
+				nazwa="IMG_0"+Integer.toString(i)+".jpg";//photo.toString().substring(aa+1,photo.toString().length());
+				i++;
+				Log.w("nazwa",nazwa);
+				nowa=new File(folder,nazwa);
+			}
 			photo.renameTo(nowa);
+
 		}
+		System.exit(0);
 	}
 
 }
